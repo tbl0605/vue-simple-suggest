@@ -176,6 +176,7 @@ export default {
       selected: null,
       hovered: null,
       suggestions: [],
+      hasMoreSuggestions: false,
       listShown: false,
       inputElement: null,
       canSend: true,
@@ -529,7 +530,7 @@ export default {
       this.$emit('input', value)
     },
     updateTextOutside(value) {
-      if (this.text === value) { return }
+      if (this.text === value && !this.hasMoreSuggestions) { return }
 
       this.text = value
       if (this.hovered) this.hover(null)
@@ -552,10 +553,11 @@ export default {
           this.canSend = false
           // @TODO: fix when promises will be cancelable (never :D)
           let textBeforeRequest = this.text
-          let newList = await this.getSuggestions(this.text)
+          let res = await this.getSuggestions(this.text);
 
           if (textBeforeRequest === this.text) {
-            this.$set(this, 'suggestions', newList)
+            this.$set(this, 'suggestions', res[0]);
+            this.hasMoreSuggestions = res[1];
           }
         }
       }
@@ -623,12 +625,13 @@ export default {
       }
 
       finally {
+        const lengthBeforeSplice = result.length;
         if (this.maxSuggestions) {
           result.splice(this.maxSuggestions)
         }
 
         this.isPlainSuggestion = nextIsPlainSuggestion
-        return result
+        return [result, lengthBeforeSplice > result.length];
       }
     },
     clearSuggestions () {
