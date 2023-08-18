@@ -15,6 +15,7 @@
         v-model="model"
         :list="getList"
         :max-suggestions="10"
+        :show-more-suggestions="true"
         :min-length="3"
         :debounce="200"
         :filter-by-query="false"
