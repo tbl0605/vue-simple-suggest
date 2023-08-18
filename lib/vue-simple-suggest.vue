@@ -148,7 +148,7 @@ export default {
   // Handle run-time mode changes (now working):
   watch: {
     mode: {
-      handler(current, old) {
+      handler(current) {
         this.constructor.options.model.event = current
 
         // Can be null if the component is root
@@ -364,7 +364,7 @@ export default {
       this.hover(null)
     },
     hover (item, elem) {
-      const elemId = !!item ? this.getId(item, this.hoveredIndex) : ''
+      const elemId = item ? this.getId(item, this.hoveredIndex) : ''
 
       this.inputElement.setAttribute('aria-activedescendant',  elemId)
 
@@ -585,6 +585,7 @@ export default {
           this.showList()
         }
 
+        // eslint-disable-next-line no-unsafe-finally
         return this.suggestions
       }
     },
@@ -640,6 +641,7 @@ export default {
         }
 
         this.isPlainSuggestion = nextIsPlainSuggestion
+        // eslint-disable-next-line no-unsafe-finally
         return [result, lengthBeforeSplice > result.length];
       }
     },
