@@ -92,6 +92,10 @@ export default {
       type: Number,
       default: 10
     },
+    showMoreSuggestions: {
+      type: Boolean,
+      default: false
+    },
     displayAttribute: {
       type: String,
       default: 'title'
@@ -530,7 +534,12 @@ export default {
       this.$emit('input', value)
     },
     updateTextOutside(value) {
-      if (this.text === value && !this.hasMoreSuggestions) { return }
+      if (
+        this.text === value &&
+        !(this.hasMoreSuggestions && this.showMoreSuggestions)
+      ) {
+        return;
+      }
 
       this.text = value
       if (this.hovered) this.hover(null)
