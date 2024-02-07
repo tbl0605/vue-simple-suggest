@@ -1,13 +1,13 @@
 {
   "name": "@vojtechlanka/vue-simple-suggest",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "author": "KazanExpress",
   "license": "MIT",
   "type": "module",
   "files": [
     "dist"
   ],
-  "module": "./dist/vue-simple-suggest.js",
+  "main": "./dist/vue-simple-suggest.js",
   "exports": {
     ".": {
       "import": "./dist/vue-tags-input.js"
