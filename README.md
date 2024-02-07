@@ -21,7 +21,6 @@ npm i @vojtechlanka/vue-simple-suggest
 ```javascript
 <script>
 import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
-import '@vojtechlanka/vue-simple-suggest/styles.css'
 
 export default {
   components: { VueSimpleSuggest },
