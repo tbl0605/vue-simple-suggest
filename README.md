@@ -36,3 +36,27 @@ export default {
 ```
 
 All options specified by [original documentation](https://github.com/KazanExpress/vue-simple-suggest) should still work.
+
+## Breaking changes
+
+When the using custom input, listener bindings must be added (provided by the vue-simple-suggest component) to the input element.
+
+For a native html input, bind the slot prop "field":
+
+```
+<vue-simple-suggest v-model="model" ...>
+  <template #default="{ field }">
+    <input v-bind="field" type="text" />
+  </template>
+</vue-simple-suggest>
+```
+
+For a custom input component, bind the slot prop "componentField":
+
+```
+<vue-simple-suggest v-model="model" ...>
+  <template #default="{ componentField }">
+    <my-custom-input v-bind="componentField" ... />
+  </template>
+</vue-simple-suggest>
+```
