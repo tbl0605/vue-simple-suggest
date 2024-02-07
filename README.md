@@ -41,7 +41,7 @@ All options specified by [original documentation](https://github.com/KazanExpres
 
 When the using custom input, listener bindings must be added (provided by the vue-simple-suggest component) to the input element.
 
-For a native html input, bind the slot prop "field":
+For a native html input, bind the slot prop `field`:
 
 ```html
 <vue-simple-suggest v-model="model" ...>
@@ -51,7 +51,7 @@ For a native html input, bind the slot prop "field":
 </vue-simple-suggest>
 ```
 
-For a custom input component, bind the slot prop "componentField":
+For a custom input component, bind the slot prop `componentField`:
 
 ```html
 <vue-simple-suggest v-model="model" ...>
