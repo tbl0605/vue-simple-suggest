@@ -43,7 +43,7 @@ When the using custom input, listener bindings must be added (provided by the vu
 
 For a native html input, bind the slot prop "field":
 
-```
+```html
 <vue-simple-suggest v-model="model" ...>
   <template #default="{ field }">
     <input v-bind="field" type="text" />
@@ -53,7 +53,7 @@ For a native html input, bind the slot prop "field":
 
 For a custom input component, bind the slot prop "componentField":
 
-```
+```html
 <vue-simple-suggest v-model="model" ...>
   <template #default="{ componentField }">
     <my-custom-input v-bind="componentField" ... />
