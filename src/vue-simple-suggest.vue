@@ -160,10 +160,14 @@ export default {
     modelSelect: {
       handler (current) {
         if (this.mode === 'select') {
-          if (typeof current !== 'string') {
-            current = this.displayProperty(current)
+          if (current === null) {
+            this.updateTextOutside('')
+          } else {
+            if (typeof current !== 'string') {
+              current = this.displayProperty(current)
+            }
+            this.updateTextOutside(current)
           }
-          this.updateTextOutside(current)
         }
       },
       immediate: true
