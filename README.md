@@ -38,6 +38,10 @@ export default {
 All options specified by [original documentation](https://github.com/KazanExpress/vue-simple-suggest) should still work.
 
 ## Breaking changes
+The component styles are now in a separate file and must be explicitly imported into your project.
+```html
+import '@vojtechlanka/vue-simple-suggest/style.css';
+```
 
 When the using custom input, listener bindings must be added (provided by the vue-simple-suggest component) to the input element.
 
