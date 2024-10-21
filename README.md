@@ -60,3 +60,26 @@ For a custom input component, bind the slot prop `componentField`:
   </template>
 </vue-simple-suggest>
 ```
+
+Custom asynchronous input components are now also supported, using a [Suspense](https://vuejs.org/guide/built-ins/suspense) component internally.
+If set, the `fallback` slot can be used to display content until the `default` slot is resolved:
+
+```html
+<template>
+  <vue-simple-suggest v-model="model" ...>
+    <template #default="{ componentField }">
+      <my-custom-async-input v-bind="componentField" ... />
+    </template>
+    <template #fallback>
+      Loading...
+    </template>
+  </vue-simple-suggest>
+</template>
+
+<script setup>
+import { defineAsyncComponent } from 'vue'
+const MyCustomAsyncInput = defineAsyncComponent(() =>
+  import('./MyCustomAsyncInput.vue')
+)
+</script>
+```

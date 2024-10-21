@@ -4,9 +4,17 @@
       ref="inputSlot" class="input-wrapper" role="combobox" aria-haspopup="listbox"
       :aria-owns="listId" :aria-expanded="!!listShown && !removeList ? 'true' : 'false'" :class="styles.inputWrapper"
     >
-      <slot :field="field" :component-field="componentField">
-        <input class="default-input" v-bind="field" :value="text || ''" :class="styles.defaultInput" />
-      </slot>
+      <Suspense @resolve="onResolve">
+        <template #default>
+          <slot :field="field" :component-field="componentField">
+            <input class="default-input" v-bind="field" :value="text || ''" :class="styles.defaultInput" />
+          </slot>
+        </template>
+
+        <template #fallback>
+          <slot name="fallback" />
+        </template>
+      </Suspense>
     </div>
     <transition name="vue-simple-suggest">
       <ul
@@ -176,18 +184,18 @@ export default {
   created () {
     this.controlScheme = Object.assign({}, defaultControls, this.controls)
   },
-  mounted () {
-    this.$nextTick(() => {
-      this.inputElement = this.$refs.inputSlot.querySelector('input')
-
-      if (this.inputElement) {
-        this.setInputAriaAttributes()
-      } else {
-        console.error('No input element found')
-      }
-    })
-  },
   methods: {
+    onResolve () {
+      this.$nextTick(() => {
+        this.inputElement = this.$refs.inputSlot.querySelector('input')
+
+        if (this.inputElement) {
+          this.setInputAriaAttributes()
+        } else {
+          console.error('No input element found')
+        }
+      })
+    },
     isEqual (suggestion, item) {
       return item && this.valueProperty(suggestion) === this.valueProperty(item)
     },
