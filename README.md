@@ -21,6 +21,8 @@ npm i @vojtechlanka/vue-simple-suggest
 ```javascript
 <script>
 import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
+// Optional CSS.
+import '@vojtechlanka/vue-simple-suggest/style.css'
 
 export default {
   components: { VueSimpleSuggest },
@@ -51,8 +53,11 @@ For a native html input, bind the slot prop `field`:
     </template>
   </vue-simple-suggest>
 </template>
+```
 
-<script>
+```javascript
+<script setup>
+import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
 // Optional CSS.
 import '@vojtechlanka/vue-simple-suggest/style.css'
 </script>
@@ -68,8 +73,11 @@ For a custom input component, bind the slot prop `componentField`:
     </template>
   </vue-simple-suggest>
 </template>
+```
 
-<script>
+```javascript
+<script setup>
+import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
 // Optional CSS.
 import '@vojtechlanka/vue-simple-suggest/style.css'
 </script>
@@ -89,8 +97,11 @@ If set, the `fallback` slot can be used to display content until the `default` s
     </template>
   </vue-simple-suggest>
 </template>
+```
 
+```javascript
 <script setup>
+import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
 // Optional CSS.
 import '@vojtechlanka/vue-simple-suggest/style.css'
 import { defineAsyncComponent } from 'vue'
