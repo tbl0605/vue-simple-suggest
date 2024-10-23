@@ -16,9 +16,7 @@ npm i @vojtechlanka/vue-simple-suggest
 <template>
   <vue-simple-suggest v-model="valueCurrent" :list="autocompleteItems" :filter-by-query="true" @update:model-select="(item) => selectedCurrent = item"/>
 </template>
-```
 
-```javascript
 <script>
 import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
 // Optional CSS.
@@ -53,10 +51,8 @@ For a native html input, bind the slot prop `field`:
     </template>
   </vue-simple-suggest>
 </template>
-```
 
-```javascript
-<script setup>
+<script>
 import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
 // Optional CSS.
 import '@vojtechlanka/vue-simple-suggest/style.css'
@@ -73,10 +69,8 @@ For a custom input component, bind the slot prop `componentField`:
     </template>
   </vue-simple-suggest>
 </template>
-```
 
-```javascript
-<script setup>
+<script>
 import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
 // Optional CSS.
 import '@vojtechlanka/vue-simple-suggest/style.css'
@@ -97,10 +91,8 @@ If set, the `fallback` slot can be used to display content until the `default` s
     </template>
   </vue-simple-suggest>
 </template>
-```
 
-```javascript
-<script setup>
+<script>
 import VueSimpleSuggest from '@vojtechlanka/vue-simple-suggest'
 // Optional CSS.
 import '@vojtechlanka/vue-simple-suggest/style.css'
@@ -110,3 +102,6 @@ const MyCustomAsyncInput = defineAsyncComponent(() =>
 )
 </script>
 ```
+## Upgrade from `2.*.*` to `3.*.*`
+
+Only breaking change is the removal of the automatic import of the styles. Now you will have to include `@vojtechlanka/vue-simple-suggest/style.css` just like in the original repository to include the default styles.
